@@ -1,43 +1,59 @@
 <template>
-  <v-app>
-    <v-system-bar app height="20" style="display: flex; justify-content: center">
-      v-system-bar 
-      </v-system-bar>
-    <v-app-bar app elevation="5" style="display: flex; justify-content: center">
-     v-app-bar
-    </v-app-bar>
-
+  <v-app id="inspire">
     <v-main>
-        <v-row style="height: 100%; margin: 0">
-            <v-navigation-drawer permanent style="display: flex; align-items: center; justify-content: center"
-            >
-              <div style="height: 100%; display: flex; align-items: center;">v-navigation-drawer</div>
-            </v-navigation-drawer>
-            <v-content style="padding: 0">
-              <div style="height: 100%; display: flex; align-items: center; justify-content: center"
-              >v-content</div>
-            </v-content>
-        
-        </v-row>
+      <router-view/>
     </v-main>
-    <v-footer style="display: flex; justify-content: center">v-footer</v-footer>
-    <v-bottom-navigation style="display: flex; align-items: center;">v-bottom-navigation</v-bottom-navigation>
+  <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      bottom
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item>
+            <v-list-item-title>Games do momento</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Em promoção</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Contato</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Lore</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon> 
+      <v-toolbar-title>Aurora Games</v-toolbar-title>
+    </v-app-bar>
   </v-app>
 </template>
 
 <script>
 export default {
   name: 'App',
-};
-</script>
-
-<script>
-
-export default {
-  name: 'App',
 
   data: () => ({
-    //
+      drawer: false,
+      group: null,
   }),
-};
+  watch: {
+      group () {
+        this.drawer = false
+      },
+    },
+}
 </script>
