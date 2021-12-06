@@ -7,18 +7,19 @@
     <v-list-item three-line>
       <v-list-item-content>
         <div class="text-overline mb-4">
-          Game
+          Event
         </div>
-        <v-list-item-title class="text-h5 mb-1">
-          {{cardInfo}}
-        </v-list-item-title>
-        <v-list-item-subtitle>In promotion</v-list-item-subtitle>
+        <v-card-title>{{cardInfo.title}}</v-card-title>
+        <v-card-text class="description">{{cardInfo.description}}</v-card-text>
       </v-list-item-content>
       <v-list-item-avatar
         tile
-        size="80"
-        color="grey"
-      ></v-list-item-avatar>
+        size="80" 
+      >
+      <v-img
+        height="100%"
+        src="http://www.procon.mt.gov.br/documents/4804190/4982624/Viagem/2fbb2952-0598-402d-bddc-8e94dade6c0b?t=1481645408218+&imageThumbnail=3"
+        /></v-list-item-avatar>
     </v-list-item>
     <v-card-actions>
       <v-btn
@@ -42,3 +43,11 @@
       props: ['cardid', 'cardInfo']
   }
 </script>
+
+<style scoped>
+  .description {
+    max-height: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>

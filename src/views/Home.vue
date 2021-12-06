@@ -3,7 +3,7 @@
     <h1>{{title}}</h1>
     <v-row>
       <v-col
-        v-for="(data,i) in Cards"
+        v-for="(data,i) in Events"
         :key="i"
         cols="12"
         sm="4"
@@ -31,11 +31,18 @@ import Cards from '../components/cards.vue'
       },
       title(){
         return this.$store.getters.bigTitle
+      },
+      Events(){
+        return this.$store.state.Events
       }
     },
 
     components: {
         Cards
+    },
+
+    async created(){
+      this.$store.dispatch("featureEvents")
     }
   }
 </script>
